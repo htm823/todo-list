@@ -53,7 +53,7 @@ function renderTask(task) {
 	const deleteBtn       = document.createElement('button');
 	deleteBtn.type        = 'button';
 	deleteBtn.className   = 'task-board__delete-btn';
-	deleteBtn.textContent = 'Delete';
+	deleteBtn.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-xmark"></i>');
 
 	deleteBtn.addEventListener('click', () => {
 		li.remove();

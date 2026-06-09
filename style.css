@@ -5,14 +5,14 @@ html {
 }
 
 :root {
-	/* Primary (Blue-Gray) */
+	/* Primary Colors */
 	--primary-100: #E8EEF2;
 	--primary-300: #A6BCC9;
 	--primary-500: #415E72;
 	--primary-700: #2E4554;
 	--primary-900: #16212A;
 
-	/* Gray (Cool Neutral) */
+	/* Gray Colors */
 	--gray-000: #FFFFFF;
 	--gray-100: #F7F9FA;
 	--gray-300: #E1E5E8;
@@ -20,13 +20,13 @@ html {
 	--gray-700: #4E545C;
 	--gray-900: #1F2327;
 
-	/* Danger */
-	--danger-delete: #E57E8F;
-    --danger-clear: #D5536C;
+	/* Danger Colors */
+	--danger-clear: #D5536C;
 
 	/* Font families */
 	--font-body: 'Tinos', sans-serif;
 	--font-heading: 'Merriweather', sans-serif;
+	--font-btn: "Inter", sans-serif;
 
 	/* Typography Scale */
 	--fs-p: 1.8rem;
@@ -59,29 +59,24 @@ body {
 .header {
 	background-color: var(--primary-500);
 	color: var(--gray-000);
-	padding: var(--space-2) 0;
+	padding: var(--space-1) 0;
 }
 
-.header__container {
+.container {
+	width: 1098px;
+	margin: 0 auto;
+}
+
+.header__inner {
 	display: flex;
 	align-items: center;
 	gap: var(--space-2);
 }
 
-.header__container,
-.main__container,
-.footer__container {
-	width: 60%;
-	margin: 0 auto;
-}
-
-.main {
-	padding: var(--space-4) 0;
-}
-
-.main__container {
+.dashboard {
 	display: flex;
 	gap: var(--space-2);
+	padding: var(--space-5) 0;
 }
 
 .task-board,
@@ -102,20 +97,25 @@ body {
 	align-items: center;
 }
 
-.task-board__clear-button {
+.task-board__clear-btn {
 	background-color: var(--danger-clear);
 	color: var(--gray-000);
 	display: block;
 	border: none;
 	border-radius: var(--radius-1);
-	padding: var(--space-1) var(--space-2);
+	padding: var(--space-1);
 	font-size: var(--fs-p);
-	font-family: var(--font-body);
+	font-family: var(--font-btn);
 	cursor: pointer;
+	transition: opacity .3s;
 }
 
-.task-board__clear-button.no-task {
-	display: none
+.task-board__clear-btn:hover {
+	opacity: 0.7;
+}
+
+.task-board__clear-btn.no-task {
+	display: none;
 }
 
 .task-board__title,
@@ -126,18 +126,18 @@ body {
 	font-weight: 700;
 }
 
-.task-board__list {
+.task-board__task-list {
 	list-style: none;
 	padding: 0;
 }
 
-.add-task__input-group {
+.add-task__input {
 	display: flex;
 	gap: var(--space-1);
 	margin-top: var(--space-2);
 }
 
-.add-task__input {
+.add-task__box {
 	flex: 1;
 	border: 1px solid var(--primary-500);
 	border-radius: var(--radius-1);
@@ -146,18 +146,28 @@ body {
 	font-family: var(--font-body);
 }
 
-.add-task__button {
+.add-task__box:focus {
+	outline: none;
+	border: 2px solid var(--primary-500);
+}
+
+.add-task__btn {
 	background-color: var(--primary-500);
 	color: var(--gray-000);
 	border: none;
 	border-radius: var(--radius-1);
-	padding: var(--space-1) var(--space-2);
+	padding: calc(var(--space-1) + .2rem);
 	font-size: var(--fs-p);
 	font-family: var(--font-body);
 	cursor: pointer;
+	transition: opacity .3s;
 }
 
-.task-board__list {
+.add-task__btn:hover {
+	opacity: 0.8;
+}
+
+.task-board__task-list {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-2);
@@ -174,25 +184,25 @@ body {
 }
 
 .task-board__delete-btn {
-	background-color: var(--danger-delete);
-	color: var(--gray-000);
+	background-color: var(--gray-000);
+	color: var(--danger-clear);
 	border: none;
 	border-radius: var(--radius-1);
 	padding: var(--space-1) var(--space-2);
 	font-size: var(--fs-p);
 	font-family: var(--font-body);
 	cursor: pointer;
+	transition: opacity .3s;
 }
 
-.task-board__delete-btn:active {
-  transform: translateY(3px);
-  box-shadow: none;
+.task-board__delete-btn:hover {
+	opacity: 0.7;
 }
 
 .task-board__checklist-item {
 	display: flex;
 	align-items: center;
-	flex: 1;
+	cursor: pointer;
 }
 
 .task-board__text {
@@ -213,6 +223,7 @@ body {
 	height: 1.8rem;
 	background-color: var(--gray-000);
 	margin: 0 var(--space-1) 0 0;
+	cursor: pointer;
 }
 
 .task-board__checkbox:checked+.task-board__custom-checkbox {
@@ -228,7 +239,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 1.8rem;
+	width: 1.6rem;
 	height: 1.8rem;
 	color: var(--gray-000);
 }
@@ -240,8 +251,6 @@ body {
 
 .footer {
 	background-color: var(--primary-500);
-	position: fixed;
-	bottom: 0;
 	width: 100%;
 }
 
@@ -250,4 +259,22 @@ body {
 	text-align: center;
 	padding: var(--space-2) 0;
 	display: block;
+}
+
+@media (max-width: 1160px) {
+	.container {
+		width: 90%;
+	}
+}
+
+@media (max-width: 760px) {
+	.dashboard {
+		flex-direction: column-reverse;
+		gap: var(--space-4);
+		padding: var(--space-4) 0;
+	}
+
+	.add-task {
+		padding: 0;
+	}
 }
