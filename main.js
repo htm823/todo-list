@@ -1,7 +1,7 @@
 'use strict';
 
 const taskInput = document.getElementById('task-input');
-const addBtn    = document.getElementById('add-btn');
+const addForm   = document.getElementById('add-form');
 const taskList  = document.getElementById('task-list');
 const clearBtn  = document.getElementById('clear-btn');
 
@@ -23,7 +23,6 @@ function loadTasks() {
 
 	updateClearBtn();
 }
-
 
 function renderTask(task) {
 	const taskItem = `
@@ -70,8 +69,10 @@ taskList.addEventListener('click', (e) => {
 	}
 });
 
-// Add a new task
-addBtn.addEventListener('click', () => {
+// Add a new task with a keydown and a button
+addForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
 	const taskText = taskInput.value.trim();
 
 	if (!taskText) {
@@ -87,8 +88,8 @@ addBtn.addEventListener('click', () => {
 	const newTask = {
 		id: crypto.randomUUID(),
 		text: taskText,
-		completed: false
-	}
+		completed: false,
+	};
 
 	tasks.push(newTask);
 	saveTasks();
