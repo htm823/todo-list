@@ -2,7 +2,7 @@
 A simple to-do list application built with HTML, CSS, and vanilla JavaScript.
 
 ## 📸 Preview
-![To-do List Preview](./img/todo-list_2.gif)
+![To-do List Preview](./img/todo-list.gif)
 
 ## ✨ Features
 - Add tasks
